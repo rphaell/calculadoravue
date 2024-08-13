@@ -1,28 +1,18 @@
+
+<!-- passando as propriedades e funcoes que sao usadas no componente -->
 <script setup>
-    const props = defineProps(['cadastraTarefa', 'tarefaTemporaria', 'trocarFiltro', 'editaTarefaTemporaria'])
+const props = defineProps(['numero1', 'numero2', 'operacao', 'atualizaNumero1', 'atualizaNumero2', 'atualizaOperacao']);
 </script>
 
+
 <template>
-    <form @submit.prevent="props.cadastraTarefa">
-        <div class="row">
-
-            <div class="col">
-                <input :value="props.tarefaTemporaria"
-                    @change="props.editaTarefaTemporaria" required class="form-control"
-                    type="text" placeholder="Digite aqui a tarefa" name="" id="">
-            </div>
-
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </div>
-
-            <div class="col-md-2">
-                <select @change="props.trocarFiltro" class="form-control">
-                    <option value="todas">Todas tarefas</option>
-                    <option value="pendentes">Pendentes</option>
-                    <option value="finalizadas">Finalizadas</option>
-                </select>
-            </div>
-        </div>
-    </form>
+    <div>
+        <h1 style="text-align: center; font-size: 70px; margin-bottom: 20px;">Calculadora</h1>
+        <input type="number" :value="numero1" @input="atualizaNumero1" placeholder="Número 1" />
+        <input type="number" :value="numero2" @input="atualizaNumero2" placeholder="Número 2" />
+        <select @change="atualizaOperacao" :value="operacao">
+            <option value="soma">Soma</option>
+            <option value="subtracao">Subtração</option>
+        </select>
+    </div>
 </template>
